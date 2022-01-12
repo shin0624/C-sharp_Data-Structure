@@ -1,0 +1,76 @@
+using System;
+
+namespace 배열_연습
+{
+    class Program
+    {
+        static int GetHighestScore(int[]scores)//아래 scores중 가장 큰 값 반환
+        {
+            int maxValue = 0;
+            foreach(int score in scores)
+            {
+                if (score > maxValue)
+                    maxValue = score;
+            }
+            return maxValue;
+        }
+
+        static int GetAverageScore(int[]scores)//아래 scores 값들의 평균을 가장 인접한 정수로 반환
+        {
+            if (scores.Length == 0)
+                return 0;
+
+            int avrageValue=0;
+            int sum=0;
+           for(int i=0; i<scores.Length; i++)
+            {
+                sum += scores[i];
+                avrageValue = sum / scores.Length;
+            }
+            return avrageValue;
+        }
+
+        static int GetIndexOf(int[]scores, int value)//scores중에서 내가 원하는 값이 있는가를 찾음,있으면 해당 인덱스 번호, 없으면-1 반환
+        {
+           
+            for(int i=0; i<scores.Length;i++)
+            {
+                if (scores[i] == value)
+                    return i;
+            }
+            return -1;
+        }
+
+        static void Sort(int[]scores)//socres를 오름차순으로 정렬
+        {
+            for(int i=0; i<scores.Length; i++)
+            {
+                //[ i~scores.length-1]의 범위에서 제일 작은 숫자가 있는 index를 찾는다
+                int MinIndex = i;
+                for(int j=i; j<scores.Length; j++)
+                {
+                    if (scores[j] < scores[MinIndex])
+                        MinIndex = j;
+                }
+
+                //swap
+                int temp = scores[i];
+                scores[i] = scores[MinIndex];
+                scores[MinIndex] = temp;
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            int[] scores = new int[5] { 10, 30, 40, 20, 50 };
+
+            Console.WriteLine(GetHighestScore(scores));
+            Console.WriteLine(GetAverageScore(scores));
+            Console.WriteLine(GetIndexOf(scores, 20));
+            Sort(scores);
+           //sorting 알고리즘 중요
+
+        }
+    }
+}
