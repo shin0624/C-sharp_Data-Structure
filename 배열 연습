@@ -1,0 +1,33 @@
+using System;
+
+namespace 배열_연습
+{
+    class Program
+    {
+        static int GetHighestScore(int[]scores)//아래 scores중 가장 큰 값 반환
+        {
+            return 0;
+        }
+
+        static int GetAverageScore(int[]scores)//아래 scores 값들의 평균을 가장 인접한 정수로 반환
+        {
+            return 0;
+        }
+
+        static int GetIndexOf(int[]scores, int value)//scores중에서 내가 원하는 값이 있는가를 찾음,있으면 해당 인덱스 번호, 없으면-1 반환
+        {
+            return -1;
+        }
+
+        static void Sort(int[]scores)//socres를 내림차순으로 정렬
+        {
+
+        }
+
+
+        static void Main(string[] args)
+        {
+            int[] scores = new int[5] { 10, 30, 40, 20, 50 };
+        }
+    }
+}
