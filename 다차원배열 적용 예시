@@ -1,0 +1,43 @@
+using System;
+
+namespace 다차원_배열
+{
+    class Program
+    {
+        //로그라이크 게임에서의 다차원배열 적용예시(타일)
+        class Map
+        {
+            int[,] tiles = { 
+                { 1, 1, 1, 1, 1 },//0은 플레이어가 이동할 수 있는 공간, 1은 이동 불가능한 벽같은 공간
+                { 1, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 1 },
+                { 1, 0, 0, 0, 1 },
+                { 1, 1, 1, 1, 1 }
+            };
+            public void Render()
+            {
+                var defaultColor = Console.ForegroundColor;//처음 컬러값
+                for(int y=0;y<tiles.GetLength(1);y++)
+                {
+                    for(int x=0; x<tiles.GetLength(0); x++)
+                    {
+                        if (tiles[y, x] == 1)
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        else
+                            Console.ForegroundColor = ConsoleColor.Green;
+
+                        Console.Write('\u25cf');
+                    }
+                    Console.WriteLine();
+                }
+                Console.ForegroundColor = defaultColor;//render를 끝낼 때 디폴트컬러값으로 해놓으면 결과값만 컬러가 출력됨
+            }
+        }
+        
+        static void Main(string[] args)
+        {
+            Map map = new Map();
+            map.Render();
+        }
+    }
+}
