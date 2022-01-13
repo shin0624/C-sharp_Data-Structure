@@ -1,0 +1,32 @@
+using System;
+
+namespace 다차원_배열
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //배열
+            int[] scores = new int[5] { 10, 30, 40, 20, 50 };
+
+            //2차원배열
+            int[,] arr = new int[2, 3] { { 1, 2, 3 }, { 1, 2, 3 } };//오른쪽에서 왼쪽으로 읽음, 오른쪽이 1차원, 왼쪽이 2차원 크기
+
+            
+            //--> 2층[ . . . ]
+            //-->1층 [ . . . ]
+
+           //가변 배열
+           //[ . . ]-->다차원 배열의 크기가 유동적일 때
+          //[ . . . . .]
+          //[ . . . ]
+          int [][] a = new int [3][];
+         a[0] = new int[3];
+         a[1] = new int[6];
+         a[2] = new int[2];
+
+         a[0][0] = 1;
+        
+        }
+    }
+}
