@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //배열 사용 시 배열의 크기가 정해져 있어 개발 도중 크기를 늘리거나 줄여야 할 때-->리스트(동적 배열)사용
+            int[] arr = new int[10];
+            //[0 1 2 3 4 ]--->삭제 삽입 사용 시 배열 값 간 복사가 일어나므로 크게 효율적이진 않음
+            List<int> list = new List<int>();
+            for (int i = 0; i < 5; i++)
+                list.Add(i);
+
+            //list기능= 삽입
+            // list.Insert(2, 999);//두번째 자리에 999를 삽입
+
+            //삭제
+            bool success = list.Remove(3);//remove=배열 안에 같은 값이 있을 때 처음의 값만 삭제하고 뒤에 있는 같은 값은 삭제하지않음(1 2 3 3 3)->(1 2 3 3)
+
+            list.RemoveAt(0);//배열의 n번째 값을 삭제
+
+            list.Clear();//배열값 전체 삭제
+
+
+            for (int i=0; i<list.Count; i++)//list.count를 쓰면 배열 길이만큼 반복
+                Console.WriteLine(list[i]);//배열값출력
+
+            foreach (int num in list)
+                Console.WriteLine(num);//리스트에 있는 num을 순회하며 순회하는 값마다 출력
+
+            
+        }
+    }
+}
