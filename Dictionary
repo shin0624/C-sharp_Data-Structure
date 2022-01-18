@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+
+namespace Dictionary
+{
+    class Program
+    {
+        class Monster
+        {
+            public int id;
+            public Monster(int id) { this.id = id; }
+        }
+        static void Main(string[] args)
+        {
+            List<int> list = new List<int>();
+
+            //MMORPG 개발 시 List 사용의 단점
+            //필드에 몬스터가 수십~수백이상 존재할 때 n번 ID의 몬스터를  List내에서 찾기가 매우 어려움->특정 key를 입력하여 value를 찾아야함
+            //-->Dictionary는 앞에있는 key를 알면 뒤에있는 value를 빠르게 찾을 수 있다.
+
+            Dictionary<int, Monster> dic = new Dictionary<int, Monster>();
+            for(int i=0; i<10000;i++)//10000마리의 몬스터가 존재하는 상황에서 특정 몬스터를 꺼낼 때
+            {
+                dic.Add(i, new Monster(i));
+
+            }
+            //Monster mon = dic[5000];//ID 5000의 몬스터가 있다면 찾을 수 있으나, 없으면 코드가 뻗어버리게 된다
+
+            Monster mon;
+            bool found = dic.TryGetValue(20000, out mon);//trygetvalue를 쓰면 존재하지 않는 ID를 탐색해도 false값이 출력되고 mon은 null값 출력
+                                                         //존재하는 ID라면 mon에 값이 들어가고 true값 출력
+
+            dic.Remove(7777);//n번째 id를 지운다
+            dic.Clear();//10000마리 모두 지운다
+        }
+    }
+}
