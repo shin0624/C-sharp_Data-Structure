@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+namespace Generic_일반화_
+{
+    class Program
+    {
+        class MyList<T>//인자가 2개일 때는 <T, K>로 사용가능
+        {
+            T[] arr = new T[10];
+
+            public T GetItem(int i)
+            {
+                return arr[i];
+            }
+
+        }
+
+        class Monster
+        {
+
+        }
+
+        static void Test<T>(T input)//어떤 값을 넣더라도 타입에 맞게 돌아가게 하고 싶을 때
+        {
+
+        }
+        static void Main(string[] args)
+        {
+            MyList<int> myIntList = new MyList<int>();
+            int item = myIntList.GetItem(0);
+
+            MyList<short> myShortList = new MyList<short>();
+            MyList<Monster> myMonsterList = new MyList<Monster>();
+
+            Test<int>(3);
+            Test<float>(3.0f);
+
+        }
+    }
+}
