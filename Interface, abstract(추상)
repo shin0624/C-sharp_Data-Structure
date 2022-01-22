@@ -1,0 +1,42 @@
+using System;
+
+namespace Interface_인터페이스_
+{
+    class Program
+    {
+        abstract class Monster//추상 클래스 abstract--> new monster처럼 인스턴스 설정 불가
+        {
+            public abstract void Shout();//Monster를 상속받는 클래스가 모두 shout를 오버라이딩 해야할 때(강요하고 싶을 때) abstract를 사용
+        }
+
+        interface IFlyable//Interface를 갖고있는 class는 무조건 fly를 구현해야 한다고 규정-->다중상속 불가의 문제 해결
+        {
+           void Fly();
+
+        }
+
+        class Orc : Monster
+        {
+            public override void Shout()
+            {
+                Console.WriteLine("Graaaaaaa");
+            }
+        }
+
+        class FlyableOrc : Orc, IFlyable//c++에서는 다중상속이 가능하지만 c#에서는 불가-->클래스가 겹치면 오류
+        {
+            public void Fly()
+            {
+
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            //인터페이스, 추상 클래스 사용의 이유 = 어떤 특정 클래스가 내가 원하는 특정 시그니처의 기능을 제공하기를 원해서
+            //추상 클래스 단점 ->여러 부모를 동시에 가질 수 없어서 사용 범위 한정->interface를 사용하는게 더 유연성 높음
+            //인터페이스 장점 -> 여러개의 인터페이스를 동시에 가지고  있어도 문제 x
+        }
+    }
+}
