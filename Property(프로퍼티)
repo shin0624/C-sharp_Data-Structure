@@ -1,0 +1,36 @@
+using System;
+
+namespace Property_프로퍼티_
+{
+    //팀 작업을 할 때 다른 사람이 쓴 코드를 활용하거나 하는 경우
+    class Program
+    {
+        //property-->oop의 은닉성과 관련
+        class Knight
+        {
+            protected int hp;
+
+            public int Hp//함수를 두개 안만들고 class 안에서 하나로 관리할수 있다는 장점이 있다.
+            {
+                get { return hp; }
+                set { hp = value; }
+            }
+        }
+        //자동완성 프로퍼티
+        class Knight2
+        {
+            public int Hp { get; set; } = 100;//간략하게 선언만 해줘도 get함수, set함수 모두 정의할 수 있다, 100으로 초기화 문법도 적용 가능
+            private int hp;
+            public int GetHp() { return hp; }
+            public void SetHp(int value) { hp = value; }
+        }
+
+        static void Main(string[] args)
+        {
+            Knight knight = new Knight();
+            knight.Hp = 100;//value=100(set)
+
+            int hp = knight.Hp;//꺼내올 때(get)
+        }
+    }
+}
