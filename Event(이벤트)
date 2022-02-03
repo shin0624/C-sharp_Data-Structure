@@ -1,0 +1,56 @@
+-----클래스 InPutManager-----
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Event_이벤트_
+{
+    //Observer Pattern
+    class InputManager//유니티 사용 시 자주 등장하는 manager 클래스-->사용자가 키보드 마우스 입력 등을 감지하여 다른 로직에 알려주는 중간 매개의 역할
+    {
+        public delegate void OnInputKey();
+        public event OnInputKey InputKey;
+
+        public void Update()// 사용자 입력을 감지
+        {
+            if (Console.KeyAvailable == false)
+                return;//-->아무 키도 입력하지 않았을 때 return
+
+            ConsoleKeyInfo info =  Console.ReadKey();//키를 입력했을 때
+            if(info.Key == ConsoleKey.A)// 유저가 입력한 키가 A라면
+            {
+                //모두에게 A를 입력한 사실을 알려준다
+                InputKey();
+            }
+        }
+    }
+}
+-----클래스 Program----
+using System;
+
+namespace Event_이벤트_
+{
+    //Event : delegate 함수 사용 시, 중요하고 조심해서 호출해야하는 함수가 있을 때 사용
+    class Program
+    {
+        static void OnInputTest()
+        {
+            Console.WriteLine("Input Received!");
+        }
+
+        static void Main(string[] args)
+        {
+            
+            InputManager inputManager = new InputManager();
+
+            inputManager.InputKey += OnInputTest;//delegate와의 차이점 = InputKey를 아무때나 호출할 수 없다
+
+
+                while (true)
+            {
+                inputManager.Update();
+            }
+
+        }
+    }
+}
