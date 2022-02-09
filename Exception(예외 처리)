@@ -1,0 +1,41 @@
+using System;
+
+namespace Exception_예외_처리_
+{
+    class Program
+    {//보통 게임 개발에서는 잘 쓰이지 않음, 단순한 예외처리가 필요한 경우(네트워크 접속 시도 실패 시 등) 사용
+        static void Main(string[] args)
+        {
+            //int a = 10;
+            //int b = 0;
+            //int result = a / b;//-->예외가 처리되지 않게됨
+            try
+            {
+                //exception처리를 하는 경우
+                //: 0으로 나눌 때,
+                //잘못된 메모리를 참조하는 경우(null을 갖고있는 참조형변수 사용, 캐스팅 미스 등),
+                //많은 용량 복사 등으로 인한 오버플로
+                int a = 10;
+                int b = 0;
+                int result = a / b;
+                //위의 result 에서 예외처리가 나면 이후의 try문은 실행 X -->finally
+
+            }
+            catch(DivideByZeroException)//0으로 나누었을 경우 전용의 catch문-->경우에 따른 예외처리문이 아주 많다
+            {
+
+
+            }
+            catch(Exception e)
+            {
+
+            }
+            finally
+            {
+
+                // 예외처리된 부분을 제외하고 최종적으로 실행되어야 할 코드를 적는다.
+                //DB, 파일 정리 등등
+            }
+        }
+    }
+}
