@@ -1,0 +1,28 @@
+using System;
+
+namespace Nullable_널러블_
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int? number = 5;//물음표를 추가하면 number의 값이 null값까지도 포함할 수 있게된다.
+
+            int b = number ?? 0;//--> number가 null이 아니라고 한다면 number.Value 값인 5를  넣어주고, null이라고 한다면 초기값으로 입력한 0을 넣어준다는 뜻
+
+            if(number!=null)//null체크 1
+            {
+                int a = number.Value;
+                Console.WriteLine(a);
+            }
+
+            if (number.HasValue)//null체크 2
+            {
+
+                int a = number.Value;
+                Console.WriteLine(a);
+            }
+        }
+    }
+}
